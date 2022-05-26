@@ -64,7 +64,10 @@ const Header = () => {
             <div className="dropdown dropdown-end">
               <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
-                  <img src={user && user?.photoURL} />
+                  <img
+                    src={user && user?.photoURL}
+                    referrerPolicy="no-referrer"
+                  />
                 </div>
               </label>
               <ul
