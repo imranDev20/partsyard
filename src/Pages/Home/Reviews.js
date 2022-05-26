@@ -7,9 +7,9 @@ import "swiper/css";
 const Reviews = () => {
   const reviews = [
     { id: 1, name: "Eblis", email: "eblis@hell.com" },
-    { id: 1, name: "Saytan", email: "saytan@hell.com" },
-    { id: 1, name: "Devil", email: "devil@hell.com" },
-    { id: 1, name: "Lucifer", email: "lucifer@hell.com" },
+    { id: 2, name: "Saytan", email: "saytan@hell.com" },
+    { id: 3, name: "Devil", email: "devil@hell.com" },
+    { id: 4, name: "Lucifer", email: "lucifer@hell.com" },
   ];
   return (
     <section className="w-full">

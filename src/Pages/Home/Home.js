@@ -1,14 +1,14 @@
 import React from "react";
 import Hero from "./Hero";
 import Reviews from "./Reviews";
-import Tools from "./Tools";
+import Parts from "./Parts";
 import Summary from "./Summary";
 
 const Home = () => {
   return (
     <main>
       <Hero />
-      <Tools />
+      <Parts />
       <Summary />
       <Reviews />
     </main>
