@@ -3,6 +3,7 @@ import Hero from "./Hero";
 import Reviews from "./Reviews";
 import Parts from "./Parts";
 import Summary from "./Summary";
+import Gallery from "./Gallery";
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <Parts />
       <Summary />
       <Reviews />
+      <Gallery />
     </main>
   );
 };

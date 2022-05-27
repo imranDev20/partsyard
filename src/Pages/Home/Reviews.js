@@ -12,7 +12,7 @@ const Reviews = () => {
     { id: 4, name: "Lucifer", email: "lucifer@hell.com" },
   ];
   return (
-    <section className="w-full">
+    <section className="w-full my-20">
       <div className="container px-10 mx-auto">
         <Swiper
           spaceBetween={50}

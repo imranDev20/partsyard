@@ -17,7 +17,9 @@ const Parts = () => {
   return (
     <section>
       <div className="container mx-auto px-10 my-20">
-        <h2 className="text-4xl font-bold text-center mb-10">Tools</h2>
+        <h2 className="text-4xl font-bold text-center mb-10">
+          Popular Moto Parts
+        </h2>
         <div className="grid grid-cols-3">
           {parts.map((part) => (
             <PartsCard
