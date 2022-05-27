@@ -33,10 +33,10 @@ const Login = () => {
     navigate(from, { replace: true });
   }
 
-  let signInError;
+  let loginError;
 
   if (error || gError) {
-    signInError = error?.message || gError.message;
+    loginError = error?.message || gError.message;
   }
 
   return (
@@ -119,7 +119,7 @@ const Login = () => {
                 </label>
               </div>
 
-              <span className="label-text-alt text-red-500">{signInError}</span>
+              <span className="label-text-alt text-red-500">{loginError}</span>
 
               <div className="form-control mt-6 uppercase">
                 <button type="submit" className={`btn ${loading && "loading"}`}>

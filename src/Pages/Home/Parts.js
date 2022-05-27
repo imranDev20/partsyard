@@ -6,14 +6,14 @@ const Parts = () => {
   const [parts, setParts] = useState([]);
 
   useEffect(() => {
-    async function getCharacters() {
+    async function getParts() {
       const response = await axios.get(
         `${process.env.REACT_APP_SERVER_URL}/parts`
       );
       console.log(response.data);
       setParts(response.data);
     }
-    getCharacters();
+    getParts();
   }, []);
 
   return (
