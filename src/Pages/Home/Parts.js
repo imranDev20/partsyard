@@ -7,7 +7,9 @@ const Parts = () => {
 
   useEffect(() => {
     async function getCharacters() {
-      const response = await axios.get(`http://localhost:4000/parts`);
+      const response = await axios.get(
+        `${process.env.REACT_APP_SERVER_URL}/parts`
+      );
       console.log(response.data);
       setParts(response.data);
     }
@@ -20,10 +22,11 @@ const Parts = () => {
         <h2 className="text-4xl font-bold text-center mb-10">
           Popular Moto Parts
         </h2>
-        <div className="grid grid-cols-3">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {parts.map((part) => (
             <PartsCard
               key={part._id}
+              id={part._id}
               name={part.name}
               description={part.description}
               image={part.image}

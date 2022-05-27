@@ -8,6 +8,11 @@ import RequireAuth from "./Pages/Shared/RequireAuth";
 import Purchase from "./Pages/Purchase/Purchase";
 import Login from "./Pages/Login/Login";
 import SignUp from "./Pages/SignUp/SignUp";
+import NotFound from "./Pages/NotFound.js/404";
+import Dashboard from "./Pages/Dashbaord/Dashboard";
+import MyOrders from "./Pages/Dashbaord/MyOrders";
+import AddReview from "./Pages/Dashbaord/AddReview";
+import MyProfile from "./Pages/Dashbaord/MyProfile";
 
 function App() {
   return (
@@ -16,16 +21,22 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
-          path="/purchase"
+          path="purchase/:partId"
           element={
             <RequireAuth>
               <Purchase />
             </RequireAuth>
           }
         />
-        <Route path="/blog" element={<Blog />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/signup" element={<SignUp />} />
+        <Route path="dashboard" element={<Dashboard />}>
+          <Route path="my-orders" element={<MyOrders />} />
+          <Route path="add-review" element={<AddReview />} />
+          <Route path="my-profile" element={<MyProfile />} />
+        </Route>
+        <Route path="blog" element={<Blog />} />
+        <Route path="login" element={<Login />} />
+        <Route path="signup" element={<SignUp />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
       <Footer />
     </div>

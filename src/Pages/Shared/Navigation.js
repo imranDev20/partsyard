@@ -4,11 +4,10 @@ import CustomLink from "./CustomLink";
 const Navigation = () => {
   const routes = [
     { id: 1, label: "Home", link: "/" },
-    { id: 2, label: "Purchase", link: "/purchase" },
     { id: 3, label: "Blog", link: "/blog" },
   ];
   return (
-    <nav className="flex mr-5">
+    <nav className="lg:flex mr-5 hidden">
       {routes.map((route) => (
         <CustomLink key={route.id} to={route.link}>
           {route.label}
