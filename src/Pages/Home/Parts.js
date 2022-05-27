@@ -6,13 +6,12 @@ const Parts = () => {
   const [parts, setParts] = useState([]);
 
   useEffect(() => {
-    async function getParts() {
+    const getParts = async () => {
       const response = await axios.get(
         `${process.env.REACT_APP_SERVER_URL}/parts`
       );
-      console.log(response.data);
       setParts(response.data);
-    }
+    };
     getParts();
   }, []);
 

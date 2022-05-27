@@ -2,26 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Outlet } from "react-router-dom";
 
-import { getAuth } from "firebase/auth";
-import { useAuthState } from "react-firebase-hooks/auth";
-import axios from "axios";
-import app from "../../firebase";
-
 const Dashboard = () => {
-  const [orders, setOrders] = useState([]);
-  const [user, loading, error] = useAuthState(auth);
-
-  useEffect(() => {
-    async function getOrders() {
-      const response = await axios.get(
-        `${process.env.REACT_APP_SERVER_URL}/parts`
-      );
-      console.log(response.data);
-      setParts(response.data);
-    }
-    getParts();
-  }, []);
-
   return (
     <main className="container mx-auto px-10">
       <div className="drawer drawer-mobile">
