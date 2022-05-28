@@ -10,7 +10,6 @@ const auth = getAuth(app);
 
 const Purchase = () => {
   const [user, loading, error] = useAuthState(auth);
-  const [orderAmount, setOrderAmount] = useState(null);
 
   const preloadedUser = {
     name: user?.displayName,
@@ -57,7 +56,7 @@ const Purchase = () => {
       partImage,
     };
 
-    const response = await axios
+    await axios
       .post(`${process.env.REACT_APP_SERVER_URL}/orders`, order)
       .then(function (response) {
         console.log(response, "post request successfull");
