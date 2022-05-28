@@ -1,41 +1,50 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import { getAuth } from "firebase/auth";
 import {
   useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
+  useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { useNavigate, useLocation } from "react-router-dom";
 import app from "../../firebase";
 const auth = getAuth(app);
 
 const SignUp = () => {
+  const [updateProfile, updating, updateError] = useUpdateProfile(auth);
   const {
     register,
     handleSubmit,
-    watch,
+    // watch,
     formState: { errors },
   } = useForm();
   const [createUserWithEmailAndPassword, user, loading, error] =
     useCreateUserWithEmailAndPassword(auth);
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
-  const onSubmit = (data) =>
-    createUserWithEmailAndPassword(data.email, data.password);
-
   let navigate = useNavigate();
   let location = useLocation();
   let from = location.state?.from?.pathname || "/";
 
+  const onSubmit = async (data) => {
+    console.log(data);
+    await createUserWithEmailAndPassword(data.email, data.password);
+    await updateProfile({ displayName: data.name });
+  };
+
   if (user || gUser) {
-    navigate(from, { replace: true });
+    // navigate(from, { replace: true });
+  }
+
+  if (user) {
+    console.log(user);
   }
 
   let signInError;
 
   if (error || gError) {
-    signInError = error?.message || gError.message;
+    signInError = error?.message || gError.message || updateError.message;
   }
 
   return (
@@ -51,6 +60,39 @@ const SignUp = () => {
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <div className="card-body">
             <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Name</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Your name"
+                  className="input input-bordered"
+                  {...register("name", {
+                    required: {
+                      value: true,
+                      message: "Name is required",
+                    },
+                    pattern: {
+                      value:
+                        /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.'-]+$/u,
+                      message: "Provide a valid name",
+                    },
+                  })}
+                />
+                <label className="label">
+                  {errors.name?.type === "required" && (
+                    <span className="label-text-alt text-red-500">
+                      {errors.name.message}
+                    </span>
+                  )}
+                  {errors.name?.type === "pattern" && (
+                    <span className="label-text-alt text-red-500">
+                      {errors.name.message}
+                    </span>
+                  )}
+                </label>
+              </div>
               <div className="form-control">
                 {/* Email */}
                 <label className="label">
@@ -121,29 +163,33 @@ const SignUp = () => {
               <span className="label-text-alt text-red-500">{signInError}</span>
 
               <div className="form-control mt-6 uppercase">
-                <button type="submit" className={`btn ${loading && "loading"}`}>
+                <button
+                  disabled={gLoading && true}
+                  type="submit"
+                  className={`btn ${loading && "loading"}`}
+                >
                   SignUp
                 </button>
               </div>
             </form>
-
-            <div className="flex flex-col w-full border-opacity-50">
-              <div className="divider">OR</div>
-            </div>
-
-            <button
-              onClick={() => signInWithGoogle()}
-              className={`btn btn-outline uppercase ${gLoading && "loading"}`}
-            >
-              Continue With Google
-            </button>
-
             <p className="text-center mt-5">
               Already a member?{" "}
               <Link className="text-blue-500 " to="/login">
                 Login instead
               </Link>
             </p>
+
+            <div className="flex flex-col w-full border-opacity-50">
+              <div className="divider">OR</div>
+            </div>
+
+            <button
+              disabled={loading && true}
+              onClick={() => signInWithGoogle()}
+              className={`btn btn-outline uppercase ${gLoading && "loading"}`}
+            >
+              Continue With Google
+            </button>
           </div>
         </div>
       </div>

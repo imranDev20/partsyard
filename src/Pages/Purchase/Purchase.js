@@ -10,6 +10,8 @@ const auth = getAuth(app);
 
 const Purchase = () => {
   const [user, loading, error] = useAuthState(auth);
+  const [orderAmount, setOrderAmount] = useState(null);
+
   const preloadedUser = {
     name: user?.displayName,
     email: user?.email,
@@ -34,8 +36,6 @@ const Purchase = () => {
       setPart(response.data);
     };
     getPart();
-
-    console.log(user);
   }, []);
 
   const handlePlaceOrder = async (data) => {
@@ -43,9 +43,19 @@ const Purchase = () => {
     const email = data?.email;
     const phone = data?.phone;
     const orderAmount = data?.orderAmount;
-    const address = data.address;
+    const address = data?.address;
+    const partName = part?.name;
+    const partImage = part?.image;
 
-    const order = { name, email, phone, orderAmount, address };
+    const order = {
+      name,
+      email,
+      phone,
+      orderAmount,
+      address,
+      partName,
+      partImage,
+    };
 
     const response = await axios
       .post(`${process.env.REACT_APP_SERVER_URL}/orders`, order)
@@ -261,7 +271,7 @@ const Purchase = () => {
             <span className="label-text-alt text-red-500"></span>
 
             <div className="form-control mt-6 uppercase px-2">
-              <button type="submit" className={`btn ${loading && "loading"}`}>
+              <button type="submit" className={`btn  ${loading && "loading"}`}>
                 Place Order
               </button>
             </div>

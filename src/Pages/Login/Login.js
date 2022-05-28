@@ -122,11 +122,21 @@ const Login = () => {
               <span className="label-text-alt text-red-500">{loginError}</span>
 
               <div className="form-control mt-6 uppercase">
-                <button type="submit" className={`btn ${loading && "loading"}`}>
+                <button
+                  type="submit"
+                  disabled={gLoading && true}
+                  className={`btn ${loading && "loading"}`}
+                >
                   Login
                 </button>
               </div>
             </form>
+            <p className="text-center mt-5">
+              Not a member?{" "}
+              <Link className="text-blue-500 " to="/signup">
+                Sign up instead
+              </Link>
+            </p>
 
             <div className="flex flex-col w-full border-opacity-50">
               <div className="divider">OR</div>
@@ -134,17 +144,11 @@ const Login = () => {
 
             <button
               onClick={() => signInWithGoogle()}
+              disabled={loading && true}
               className={`btn btn-outline uppercase ${gLoading && "loading"}`}
             >
               Continue With Google
             </button>
-
-            <p className="text-center mt-5">
-              Not a member?{" "}
-              <Link className="text-blue-500 " to="/signup">
-                Sign up instead
-              </Link>
-            </p>
           </div>
         </div>
       </div>
