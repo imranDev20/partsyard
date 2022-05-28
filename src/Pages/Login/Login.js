@@ -21,6 +21,7 @@ const Login = () => {
   const [signInWithEmailAndPassword, user, loading, error] =
     useSignInWithEmailAndPassword(auth);
   const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
+  // Access Token Hook
   const [token] = useToken(user || gUser);
 
   const onSubmit = (data) =>

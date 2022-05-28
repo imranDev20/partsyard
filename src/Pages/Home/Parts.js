@@ -10,6 +10,7 @@ const Parts = () => {
       const response = await axios.get(
         `${process.env.REACT_APP_SERVER_URL}/parts`
       );
+
       setParts(response.data);
     };
     getParts();

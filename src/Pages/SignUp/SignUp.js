@@ -38,7 +38,7 @@ const SignUp = () => {
     if (token) {
       navigate(from, { replace: true });
     }
-  }, [token, from, navigate]);
+  }, [token, updating, from, navigate]);
 
   let signInError;
 

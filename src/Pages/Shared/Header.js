@@ -84,7 +84,13 @@ const Header = () => {
                   <a>Settings</a>
                 </li>
                 <li>
-                  <button className="uppercase" onClick={() => signOut(auth)}>
+                  <button
+                    className="uppercase"
+                    onClick={() => {
+                      signOut(auth);
+                      localStorage.removeItem("accessToken");
+                    }}
+                  >
                     Logout
                   </button>
                 </li>

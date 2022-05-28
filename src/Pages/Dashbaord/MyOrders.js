@@ -1,28 +1,62 @@
 import React, { useEffect, useState } from "react";
 import { getAuth } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { signOut } from "firebase/auth";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import app from "../../firebase";
 
 const auth = getAuth(app);
 const MyOrders = () => {
   const [orders, setOrders] = useState([]);
   const [user, loading, error] = useAuthState(auth);
+  let navigate = useNavigate();
 
   useEffect(() => {
     const getOrders = async () => {
       if (user) {
         const email = user.email;
         const url = `${process.env.REACT_APP_SERVER_URL}/orders/filter?email=${email}`;
-        const { data } = await axios.get(url);
-        setOrders(data);
+        await axios
+          .get(url, {
+            headers: {
+              authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+            },
+          })
+          .then(function (response) {
+            console.log(response, "post request successfull");
+            setOrders(response.data);
+          })
+          .catch(function (error) {
+            console.log(error);
+            if (
+              error.response.status === 401 ||
+              error.response.status === 403
+            ) {
+              signOut(auth);
+              localStorage.removeItem("accessToken");
+              navigate("/");
+            }
+          });
       }
     };
-
     getOrders();
+
+    // const email = user?.email;
+    // const url = `${process.env.REACT_APP_SERVER_URL}/orders/filter?email=${email}`;
+    // fetch(url, {
+    //   method: "GET",
+    //   headers: {
+    //     authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+    //   },
+    // })
+    //   .then((res) => {
+    //     console.log("res", res);
+    //     return res.json();
+    //   })
+    //   .then((data) => console.log(data));
   }, [user]);
 
-  console.log(orders);
   return (
     <div>
       <div className="overflow-x-auto w-full">
