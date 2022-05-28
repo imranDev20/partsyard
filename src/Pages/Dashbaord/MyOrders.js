@@ -55,7 +55,7 @@ const MyOrders = () => {
     //     return res.json();
     //   })
     //   .then((data) => console.log(data));
-  }, [user]);
+  }, [user, navigate]);
 
   return (
     <div>
