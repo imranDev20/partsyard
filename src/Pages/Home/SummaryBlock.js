@@ -9,7 +9,10 @@ const SummaryBlock = ({ title, number, icon, sign }) => {
   });
 
   return (
-    <div className="text-center flex flex-col items-center" ref={ref}>
+    <div
+      className="text-center flex flex-col items-center text-white my-5 lg:my-0"
+      ref={ref}
+    >
       {icon}
 
       <CountUp
@@ -20,8 +23,8 @@ const SummaryBlock = ({ title, number, icon, sign }) => {
       >
         {({ countUpRef, start }) => {
           return (
-            <div className="flex text-5xl">
-              <span ref={countUpRef} /> {sign}
+            <div className="flex text-5xl font-medium my-2">
+              <span ref={countUpRef} /> <span>{sign}</span>
             </div>
           );
         }}

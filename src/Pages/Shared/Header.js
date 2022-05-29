@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import Navigation from "./Navigation";
-import { MdSportsMotorsports } from "react-icons/md";
+
 import { getAuth, signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import app from "../../firebase";
+import Logo from "./Logo";
 
 const auth = getAuth(app);
 
@@ -15,13 +16,7 @@ const Header = () => {
     <header className="w-full">
       <div className="navbar container mx-auto px-10 bg-base-100">
         <div className="flex-1">
-          <Link
-            to="/"
-            className="btn btn-ghost text-xl flex items-center uppercase"
-          >
-            <MdSportsMotorsports className="mr-2 text-red-600 text-2xl" />
-            PartsYard
-          </Link>
+          <Logo />
         </div>
         <div className="flex-none">
           <Navigation />

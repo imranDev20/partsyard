@@ -1,26 +1,26 @@
 [
   {
-    "name": "Item 1",
-    "description": "If a dog chews shoes whose shoes does he choose?",
-    "image": "https://api.lorem.space/image/shoes?w=400&h=225",
-    "minOrder": 24,
-    "available": 200,
-    "price": 1000
+    "name": "Exhaust muffler pipe 38mm/1.5 inch carbon fiber",
+    "description": "Fit for 38mm exhaust muffler pipe, practical..Make exhaust smoother, improve power, give you a good driving experience.",
+    "image": "https://static-01.daraz.com.bd/p/0b432f7902d05b619519496796269a5c.jpg",
+    "minOrder": 10,
+    "available": 534,
+    "price": 3826
   },
   {
-    "name": "Item 2",
-    "description": "If a dog chews shoes whose shoes does he choose?",
-    "image": "https://api.lorem.space/image/shoes?w=400&h=225",
-    "minOrder": 24,
-    "available": 200,
-    "price": 1000
+    "name": "Universal Motorcycle Tyre Guard/ Mudguard for rear fende",
+    "description": "Motorcycle Rear Wheel Cover Splash Guard Mudguard and Bracket For any Bike",
+    "image": "https://m.media-amazon.com/images/I/61ywc+g+dcL.jpg",
+    "minOrder": 17,
+    "available": 1012,
+    "price": 680
   },
   {
-    "name": "Item 3",
-    "description": "If a dog chews shoes whose shoes does he choose?",
-    "image": "https://api.lorem.space/image/shoes?w=400&h=225",
+    "name": "SUPERMAXX ST MA-ST2 Tyre for sports bikes",
+    "description": "The Supermaxx ST is a sport touring motorcycle tyre designed to provide miles upon miles.",
+    "image": "https://www.maxxis.com/uk/wp-content/uploads/sites/4/2021/02/tyre-image-mast-1024x1024.png",
     "minOrder": 24,
-    "available": 200,
-    "price": 1000
+    "available": 630,
+    "price": 2076
   }
 ]
