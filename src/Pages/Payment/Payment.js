@@ -14,6 +14,11 @@ const Payment = () => {
       },
     }).then((res) => res.json())
   );
+
+  if (isLoading) {
+    return "Loading...";
+  }
+
   return <div>Payment</div>;
 };
 
