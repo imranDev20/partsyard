@@ -8,9 +8,16 @@ const UsersRow = ({ email, index, role, refetch }) => {
         authorization: `Bearer ${localStorage.getItem("accessToken")}`,
       },
     })
-      .then((res) => res.json())
+      .then((res) => {
+        if (res.status === 403) {
+          console.log("Failed to make admin. You are not admin");
+        }
+        return res.json();
+      })
       .then((data) => {
-        refetch();
+        if (data.modifiedCount > 0) {
+          refetch();
+        }
       });
   };
   return (

@@ -14,6 +14,7 @@ import MyOrders from "./Pages/Dashbaord/MyOrders";
 import AddReview from "./Pages/Dashbaord/AddReview";
 import MyProfile from "./Pages/Dashbaord/MyProfile";
 import Users from "./Pages/Dashbaord/Users";
+import RequireAdmin from "./Pages/Shared/RequireAdmin";
 
 function App() {
   return (
@@ -40,7 +41,14 @@ function App() {
           <Route index element={<MyOrders />} />
           <Route path="add-review" element={<AddReview />} />
           <Route path="my-profile" element={<MyProfile />} />
-          <Route path="users" element={<Users />} />
+          <Route
+            path="users"
+            element={
+              <RequireAdmin>
+                <Users />
+              </RequireAdmin>
+            }
+          />
         </Route>
         <Route path="blog" element={<Blog />} />
         <Route path="login" element={<Login />} />
