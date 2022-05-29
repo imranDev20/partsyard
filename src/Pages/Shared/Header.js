@@ -19,7 +19,7 @@ const Header = () => {
             to="/"
             className="btn btn-ghost text-xl flex items-center uppercase"
           >
-            <MdSportsMotorsports className="mr-2 text-blue-600 text-2xl" />
+            <MdSportsMotorsports className="mr-2 text-red-600 text-2xl" />
             PartsYard
           </Link>
         </div>

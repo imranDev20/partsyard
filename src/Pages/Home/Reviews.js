@@ -1,28 +1,33 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import ReviewsCard from "./ReviewsCard";
 
 import "swiper/css";
 
 const Reviews = () => {
-  const reviews = [
-    { id: 1, name: "Eblis", email: "eblis@hell.com" },
-    { id: 2, name: "Saytan", email: "saytan@hell.com" },
-    { id: 3, name: "Devil", email: "devil@hell.com" },
-    { id: 4, name: "Lucifer", email: "lucifer@hell.com" },
-  ];
+  const [reviews, setReviews] = useState([]);
+  useEffect(() => {
+    fetch(`${process.env.REACT_APP_SERVER_URL}/reviews`)
+      .then((res) => res.json())
+      .then((data) => setReviews(data));
+  }, []);
+
+  console.log(reviews);
   return (
     <section className="w-full my-20">
       <div className="container px-10 mx-auto">
+        <h2 className="text-4xl font-bold text-center mb-10">
+          What the Clients Say
+        </h2>
         <Swiper
-          spaceBetween={50}
+          spaceBetween={2}
           slidesPerView={3}
-          onSlideChange={() => console.log("slide change")}
-          onSwiper={(swiper) => console.log(swiper)}
+          // onSlideChange={() => console.log("slide change")}
+          // onSwiper={(swiper) => console.log(swiper)}
         >
           {reviews.map((review) => (
-            <SwiperSlide key={review.id}>
-              <ReviewsCard />
+            <SwiperSlide key={review._id} className="py-5 px-3">
+              <ReviewsCard review={review} />
             </SwiperSlide>
           ))}
         </Swiper>

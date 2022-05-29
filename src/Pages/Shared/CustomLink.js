@@ -9,7 +9,7 @@ const CustomLink = ({ children, to, ...props }) => {
     <div>
       <Link
         className={`${
-          match ? "text-blue-600" : "text-gray-500"
+          match ? "text-red-600" : "text-gray-500"
         } font-medium inline-block mx-3 px-2 uppercase`}
         to={to}
         {...props}
