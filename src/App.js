@@ -16,6 +16,7 @@ import MyProfile from "./Pages/Dashbaord/MyProfile";
 import Users from "./Pages/Dashbaord/Users";
 import RequireAdmin from "./Pages/Shared/RequireAdmin";
 import AllOrders from "./Pages/Dashbaord/AllOrders";
+import Payment from "./Pages/Payment/Payment";
 
 function App() {
   return (
@@ -23,6 +24,15 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route
+          path="payment/:orderId"
+          element={
+            <RequireAuth>
+              <Payment />
+            </RequireAuth>
+          }
+        />
+
         <Route
           path="purchase/:partId"
           element={
@@ -40,6 +50,7 @@ function App() {
           }
         >
           <Route index element={<MyOrders />} />
+
           <Route path="add-review" element={<AddReview />} />
           <Route path="my-profile" element={<MyProfile />} />
           <Route

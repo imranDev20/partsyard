@@ -30,9 +30,10 @@ const AllOrders = () => {
                   <input type="checkbox" className="checkbox" />
                 </label> */}
               </th>
-              <th>Name</th>
               <th>Item Name</th>
-              <th>Status</th>
+              <th>Email</th>
+              <th>Payment Status</th>
+              <th></th>
               {/* <th></th> */}
             </tr>
           </thead>
@@ -40,6 +41,7 @@ const AllOrders = () => {
             {orders.map((order, index) => (
               <OrdersRow
                 key={order._id}
+                id={order._id}
                 partName={order.partName}
                 email={order.email}
                 index={index}
@@ -48,15 +50,15 @@ const AllOrders = () => {
             ))}
           </tbody>
 
-          <tfoot>
+          {/* <tfoot>
             <tr>
               <th></th>
               <th>Name</th>
               <th>Job</th>
               <th>Favorite Color</th>
-              {/* <th></th> */}
+              <th></th>
             </tr>
-          </tfoot>
+          </tfoot> */}
         </table>
       </div>
     </main>

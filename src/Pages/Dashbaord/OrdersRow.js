@@ -1,6 +1,7 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
-const OrdersRow = ({ email, index, partName, refetch }) => {
+const OrdersRow = ({ email, index, partName, refetch, id }) => {
   return (
     <tr>
       <th>
@@ -10,23 +11,10 @@ const OrdersRow = ({ email, index, partName, refetch }) => {
         {index + 1}
       </th>
       <td>
-        <div className="flex items-center space-x-3">
-          {/* <div className="avatar">
-            <div className="mask mask-squircle w-12 h-12">
-              <img
-                src="/tailwind-css-component-profile-2@56w.png"
-                alt="Avatar Tailwind CSS Component"
-              />
-            </div>
-          </div> */}
-          <div>
-            <div className="">{email}</div>
-            {/* <div className="text-sm opacity-50">United States</div> */}
-          </div>
-        </div>
+        <div>{partName}</div>
       </td>
       <td>
-        <div>{partName}</div>
+        <div className="">{email}</div>
       </td>
       <td>
         {/* Zemlak, Daniel and Leannon
@@ -35,7 +23,12 @@ const OrdersRow = ({ email, index, partName, refetch }) => {
           Desktop Support Technician
         </span> */}
 
-        <button className="btn btn-xs">Pending</button>
+        <p className="badge badge-ghost">Pending</p>
+      </td>
+      <td>
+        <button className="btn btn-xs">
+          <Link to={`/payment/${id}`}>Pay</Link>
+        </button>
       </td>
 
       {/* <th>
