@@ -100,7 +100,7 @@ const Contact = () => {
                   <span className="label-text">Message</span>
                 </label>
                 <textarea
-                  class="textarea textarea-bordered"
+                  className="textarea textarea-bordered"
                   placeholder="Tell us what you want to say..."
                   rows="4"
                 ></textarea>
