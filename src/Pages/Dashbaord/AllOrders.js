@@ -30,7 +30,7 @@ const AllOrders = () => {
                   <input type="checkbox" className="checkbox" />
                 </label> */}
               </th>
-              <th>Item Name</th>
+              <th>Part Name</th>
               <th>Email</th>
               <th>Payment Status</th>
               <th>Transaction ID</th>
@@ -51,16 +51,6 @@ const AllOrders = () => {
               />
             ))}
           </tbody>
-
-          {/* <tfoot>
-            <tr>
-              <th></th>
-              <th>Name</th>
-              <th>Job</th>
-              <th>Favorite Color</th>
-              <th></th>
-            </tr>
-          </tfoot> */}
         </table>
       </div>
     </main>

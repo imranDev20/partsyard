@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectFade, Navigation, Autoplay, A11y, Pagination } from "swiper";
 
@@ -9,35 +9,6 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 const Hero = () => {
-  const heroSlides = [
-    {
-      id: 1,
-      image:
-        "https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80",
-      text: {
-        title: "Ride like a pro",
-        desc: "There is often a racing counterpart to each type, such as road racing and street bikes, or motocross including dirt bikes.",
-      },
-    },
-    {
-      id: 2,
-      image:
-        "https://images.unsplash.com/photo-1519307170597-2ac2f8f343a4?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80",
-      text: {
-        title: "Ride the rodeo",
-        desc: "There is often a racing counterpart to each type, such as road racing and street bikes, or motocross including dirt bikes.",
-      },
-    },
-    {
-      id: 3,
-      image:
-        "https://images.unsplash.com/photo-1595822388819-468d10427c02?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80",
-      text: {
-        title: "Ride the rodeo",
-        desc: "There is often a racing counterpart to each type, such as road racing and street bikes, or motocross including dirt bikes.",
-      },
-    },
-  ];
   return (
     <section>
       <Swiper
@@ -52,7 +23,7 @@ const Hero = () => {
         // onSwiper={(swiper) => console.log(swiper)}
         className="h-[calc(100vh-66px)]"
       >
-        <SwiperSlide className="relative before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:w-full before:h-full before:bg-black/70">
+        <SwiperSlide className="relative before:content-[''] before:absolute before:top-0 before:left-0 before:right-0 before:bottom-0 before:w-full before:h-full before:bg-black/50">
           <img
             className="w-full h-full object-cover"
             src="https://images.unsplash.com/photo-1568772585407-9361f9bf3a87?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2670&q=80"

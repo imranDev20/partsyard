@@ -11,13 +11,17 @@ const Offer = () => {
           alt=""
         />
 
-        <div className="flex justify-between items-center ">
-          <div className="w-full  items-center md:w-1/3">
+        <div className="flex flex-col md:flex-row justify-between items-center ">
+          <div className="w-full text-center md:text-left md:w-1/3">
             <h2 className="text-white text-5xl w-full font-bold mt-20 leading-[1.5]">
               Limited time offer <br /> Get Your helmet
             </h2>
           </div>
-          <div className="w-full md:w-1/3">1</div>
+          <div className="w-full md:w-1/3 text-center md:text-right">
+            <h2 className="text-white text-5xl w-full font-bold mt-20 leading-[1.5]">
+              30% Discount <br /> On or preorders
+            </h2>
+          </div>
         </div>
       </div>
     </section>

@@ -2,11 +2,8 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useAuthState } from "react-firebase-hooks/auth";
-import { getAuth } from "firebase/auth";
 import { useForm } from "react-hook-form";
-import app from "../../firebase";
-
-const auth = getAuth(app);
+import auth from "../../firebase";
 
 const Purchase = () => {
   const [user, loading, error] = useAuthState(auth);

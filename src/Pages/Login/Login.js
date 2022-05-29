@@ -1,15 +1,14 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { getAuth, signInWithEmailAndPassword, signOut } from "firebase/auth";
+import auth from "../../firebase";
 import {
   useSignInWithEmailAndPassword,
   useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { useNavigate, useLocation } from "react-router-dom";
-import app from "../../firebase";
+
 import useToken from "../../hooks/useToken";
-const auth = getAuth(app);
 
 const Login = () => {
   const {

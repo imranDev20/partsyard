@@ -1,16 +1,14 @@
 import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { getAuth } from "firebase/auth";
 import {
   useCreateUserWithEmailAndPassword,
   useSignInWithGoogle,
   useUpdateProfile,
 } from "react-firebase-hooks/auth";
 import { useNavigate, useLocation } from "react-router-dom";
-import app from "../../firebase";
+import auth from "../../firebase";
 import useToken from "../../hooks/useToken";
-const auth = getAuth(app);
 
 const SignUp = () => {
   const [updateProfile, updating, updateError] = useUpdateProfile(auth);

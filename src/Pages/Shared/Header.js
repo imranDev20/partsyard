@@ -2,12 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Navigation from "./Navigation";
 
-import { getAuth, signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
-import app from "../../firebase";
+import auth from "../../firebase";
 import Logo from "./Logo";
-
-const auth = getAuth(app);
 
 const Header = () => {
   const [user, loading, error] = useAuthState(auth);

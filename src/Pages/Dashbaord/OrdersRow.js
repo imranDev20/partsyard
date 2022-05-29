@@ -12,12 +12,7 @@ const OrdersRow = ({
 }) => {
   return (
     <tr>
-      <th>
-        {/* <label>
-          <input type="checkbox" className="checkbox" />
-        </label> */}
-        {index + 1}
-      </th>
+      <th>{index + 1}</th>
       <td>
         <div>{partName}</div>
       </td>

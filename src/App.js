@@ -17,6 +17,8 @@ import Users from "./Pages/Dashbaord/Users";
 import RequireAdmin from "./Pages/Shared/RequireAdmin";
 import AllOrders from "./Pages/Dashbaord/AllOrders";
 import Payment from "./Pages/Payment/Payment";
+import DeleteOrderModal from "./Pages/Shared/DeleteOrderModal";
+import AddParts from "./Pages/Dashbaord/AddParts";
 
 function App() {
   return (
@@ -66,6 +68,14 @@ function App() {
             element={
               <RequireAdmin>
                 <AllOrders />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="add-parts"
+            element={
+              <RequireAdmin>
+                <AddParts />
               </RequireAdmin>
             }
           />
