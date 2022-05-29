@@ -1,7 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const OrdersRow = ({ email, index, partName, refetch, id }) => {
+const OrdersRow = ({
+  email,
+  index,
+  partName,
+  refetch,
+  id,
+  transactionId,
+  paid,
+}) => {
   return (
     <tr>
       <th>
@@ -23,12 +31,15 @@ const OrdersRow = ({ email, index, partName, refetch, id }) => {
           Desktop Support Technician
         </span> */}
 
-        <p className="badge badge-ghost">Pending</p>
+        <p className="badge badge-ghost">{!paid ? "Pending" : "Paid"}</p>
       </td>
       <td>
-        <button className="btn btn-xs">
-          <Link to={`/payment/${id}`}>Pay</Link>
-        </button>
+        {!paid && (
+          <button className="btn btn-xs">
+            <Link to={`/payment/${id}`}>Pay</Link>
+          </button>
+        )}
+        {paid && <p className="badge badge-ghost badge-sm">{transactionId}</p>}
       </td>
 
       {/* <th>

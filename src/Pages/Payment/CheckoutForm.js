@@ -8,10 +8,11 @@ const CheckoutForm = ({ order }) => {
   const [cardError, setCardError] = useState("");
   const [cardSuccess, setCardSuccess] = useState("");
   const [transactionId, setTransactionId] = useState("");
+  const [processing, setProcessing] = useState(false);
   const [clientSecret, setClientSecret] = useState("");
 
   console.log(order);
-  const { price, name, email } = order;
+  const { _id, price, name, email, partName } = order;
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_SERVER_URL}/create-payment-intent`, {
@@ -50,6 +51,7 @@ const CheckoutForm = ({ order }) => {
 
     setCardError(error?.message || "");
     setCardSuccess("");
+    setProcessing(true);
 
     // Confirm card Payment
     const { paymentIntent, error: intentError } =
@@ -65,11 +67,35 @@ const CheckoutForm = ({ order }) => {
     if (intentError) {
       setCardError(intentError?.message);
       setCardSuccess("");
+      setProcessing(false);
     } else {
       setCardError("");
       console.log(paymentIntent);
       setTransactionId(paymentIntent.id);
       setCardSuccess("Congrats! Your payment is completed");
+
+      // updaing db information
+      const payment = {
+        userName: name,
+        userEmail: email,
+        partName: partName,
+        amount: price,
+        transactionId: paymentIntent.id,
+      };
+
+      fetch(`${process.env.REACT_APP_SERVER_URL}/order/${_id}`, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+          authorization: `Bearer ${localStorage.getItem("accessToken")}`,
+        },
+        body: JSON.stringify(payment),
+      })
+        .then((res) => res.json())
+        .then((data) => {
+          setProcessing(false);
+          console.log(data);
+        });
     }
   };
 

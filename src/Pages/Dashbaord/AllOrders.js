@@ -33,7 +33,7 @@ const AllOrders = () => {
               <th>Item Name</th>
               <th>Email</th>
               <th>Payment Status</th>
-              <th></th>
+              <th>Transaction ID</th>
               {/* <th></th> */}
             </tr>
           </thead>
@@ -44,6 +44,8 @@ const AllOrders = () => {
                 id={order._id}
                 partName={order.partName}
                 email={order.email}
+                paid={order.paid}
+                transactionId={order.transactionId}
                 index={index}
                 refetch={refetch}
               />
