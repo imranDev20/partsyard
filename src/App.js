@@ -15,6 +15,7 @@ import AddReview from "./Pages/Dashbaord/AddReview";
 import MyProfile from "./Pages/Dashbaord/MyProfile";
 import Users from "./Pages/Dashbaord/Users";
 import RequireAdmin from "./Pages/Shared/RequireAdmin";
+import AllOrders from "./Pages/Dashbaord/AllOrders";
 
 function App() {
   return (
@@ -46,6 +47,14 @@ function App() {
             element={
               <RequireAdmin>
                 <Users />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="all-orders"
+            element={
+              <RequireAdmin>
+                <AllOrders />
               </RequireAdmin>
             }
           />
