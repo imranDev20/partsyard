@@ -44,12 +44,14 @@ const Purchase = () => {
     const orderAmount = data?.orderAmount;
     const address = data?.address;
     const partName = part?.name;
+    const price = part?.price;
     const partImage = part?.image;
 
     const order = {
       name,
       email,
       phone,
+      price,
       orderAmount,
       address,
       partName,
