@@ -19,6 +19,7 @@ import AllOrders from "./Pages/Dashbaord/AllOrders";
 import Payment from "./Pages/Payment/Payment";
 import AddParts from "./Pages/Dashbaord/AddParts";
 import AddReviewPage from "./Pages/Dashbaord/AddReviewPage";
+import ManageParts from "./Pages/Dashbaord/ManageParts";
 
 function App() {
   return (
@@ -77,6 +78,14 @@ function App() {
             element={
               <RequireAdmin>
                 <AllOrders />
+              </RequireAdmin>
+            }
+          />
+          <Route
+            path="manage-parts"
+            element={
+              <RequireAdmin>
+                <ManageParts />
               </RequireAdmin>
             }
           />

@@ -19,11 +19,15 @@ const Parts = () => {
   return (
     <section>
       <div className="container mx-auto px-10 my-20">
-        <h2 className="text-4xl font-bold text-center mb-10">
+        <h2 className="text-4xl font-bold text-center mb-5">
           Popular Moto Parts
         </h2>
-        <p className="">See and choose from a wide variety of </p>
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
+        <p className="text-lg text-center mb-10 max-w-3xl mx-auto">
+          See and choose from a wide variety of accessories and parts tailored
+          to suit your needs. More than enough parts are available to suffice
+          your needs.
+        </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
           {parts.map((part) => (
             <PartsCard
               key={part._id}

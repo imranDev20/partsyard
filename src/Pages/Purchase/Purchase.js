@@ -28,7 +28,6 @@ const Purchase = () => {
       const response = await axios.get(
         `${process.env.REACT_APP_SERVER_URL}/parts/${partId}`
       );
-
       setPart(response.data);
     };
     getPart();
