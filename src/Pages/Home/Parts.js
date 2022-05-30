@@ -22,6 +22,7 @@ const Parts = () => {
         <h2 className="text-4xl font-bold text-center mb-10">
           Popular Moto Parts
         </h2>
+        <p className="">See and choose from a wide variety of </p>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-10">
           {parts.map((part) => (
             <PartsCard

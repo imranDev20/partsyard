@@ -97,7 +97,7 @@ const MyProfile = () => {
             />
           </div>
           <button
-            onClick={() => setUpdateProfile(true)}
+            onClick={() => setUpdateProfile(!updateProfile)}
             className="btn btn-sm mt-5"
           >
             Edit profile
