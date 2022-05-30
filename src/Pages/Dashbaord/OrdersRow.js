@@ -1,13 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import DeleteOrderModal from "../Shared/DeleteOrderModal";
 
-const OrdersRow = ({
-  email,
-  index,
-  partName,
-
-  paid,
-}) => {
+const OrdersRow = ({ email, index, partName, paid, id }) => {
   const [shipped, setShipped] = useState(false);
   return (
     <tr>
@@ -29,6 +24,17 @@ const OrdersRow = ({
           <button className="btn btn-ghost btn-xs">Unpaid</button>
         )}
       </td>
+      <td>
+        {!paid && (
+          <label
+            htmlFor="delete-order-modal"
+            className="btn btn-ghost btn-xs ml-3"
+          >
+            Delete
+          </label>
+        )}
+      </td>
+      {<DeleteOrderModal id={id} />}
     </tr>
   );
 };

@@ -30,7 +30,9 @@ const DeleteOrderModal = ({ id }) => {
           <p className="py-4">
             You lose all your order data, this process is irreversible.
           </p>
-          <button onClick={() => handleDeleteOrder()}>Delete</button>
+          <button className="btn" onClick={() => handleDeleteOrder()}>
+            Delete
+          </button>
         </div>
       </div>
     </>

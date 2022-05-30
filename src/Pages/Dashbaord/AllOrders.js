@@ -25,16 +25,11 @@ const AllOrders = () => {
         <table className="table w-full">
           <thead>
             <tr>
-              <th>
-                {/* <label>
-                  <input type="checkbox" className="checkbox" />
-                </label> */}
-              </th>
+              <th></th>
               <th>Part Name</th>
               <th>Email</th>
               <th>Payment Status</th>
               <th></th>
-              {/* <th></th> */}
             </tr>
           </thead>
           <tbody>
