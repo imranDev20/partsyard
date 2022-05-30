@@ -18,6 +18,120 @@ const MyPortfolio = () => {
           <button className="btn btn-md bg-red-600 mt-5">Hire Me</button>
         </div>
       </div>
+
+      <div className="my-20 max-w-2xl mx-auto px-10">
+        <h2 className="text-3xl text-center font-bold uppercase ">My Skills</h2>
+        <div className="flex justify-between">
+          <div className="mt-10">
+            <div className="">
+              <div className="mr-2">HTML</div>
+              <progress
+                class="progress progress-secondary w-56"
+                value="100"
+                max="100"
+              ></progress>
+            </div>
+            <div className="">
+              <div className="mr-2">CSS</div>
+              <progress
+                class="progress progress-secondary w-56"
+                value="95"
+                max="100"
+              ></progress>
+            </div>
+            <div className="">
+              <div className="mr-2">JavaScript</div>
+              <progress
+                class="progress progress-secondary w-56"
+                value="90"
+                max="100"
+              ></progress>
+            </div>
+          </div>
+          <div className="mt-10">
+            <div className="">
+              <div className="mr-2">React</div>
+              <progress
+                class="progress progress-secondary w-56"
+                value="90"
+                max="100"
+              ></progress>
+            </div>
+            <div className="">
+              <div className="mr-2">MongoDB</div>
+              <progress
+                class="progress progress-secondary w-56"
+                value="95"
+                max="100"
+              ></progress>
+            </div>
+            <div className="">
+              <div className="mr-2">Node.js</div>
+              <progress
+                class="progress progress-secondary w-56"
+                value="80"
+                max="100"
+              ></progress>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="my-10 container mx-auto px-10">
+        <h2 className="text-3xl text-center font-bold uppercase ">
+          My Projects
+        </h2>
+
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">
+          <div className="card shadow-lg p-10">
+            <h3 className="text-xl font-medium">
+              Warehouse Management Website
+            </h3>
+            <a
+              className="text-red-600"
+              href="https://warehouse-management-a0da8.web.app/"
+            >
+              warehouse-management-a0da8.web.app
+            </a>
+          </div>
+          <div className="card shadow-lg p-10">
+            <h3 className="text-xl font-medium">
+              Independent Service Provider
+            </h3>
+            <a
+              className="text-red-600"
+              href="https://independent-service-prov-a0909.web.app/"
+            >
+              independent-service-prov-a0909.web.app
+            </a>
+          </div>
+          <div className="card shadow-lg p-10">
+            <h3 className="text-xl font-medium">Product Analysis Website</h3>
+            <a
+              className="text-red-600"
+              href="https://product-analysis-imrandev20.netlify.app/"
+            >
+              product-analysis-imrandev20.netlify.app
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div className="max-w-lg mx-auto ">
+        <h2 className="text-3xl text-center font-bold uppercase ">About Me</h2>
+
+        <div className="card shadow-lg p-10">
+          <p className="text-xl my-2">
+            Name: <span className="text-red-600">Imran Kabir</span>
+          </p>
+          <p className="text-xl my-2">
+            Email: <span className="text-red-600">imrandev20@gmail.com</span>
+          </p>
+          <p className="text-xl my-2">
+            Education: <span className="text-red-600">B.Sc in Mathematics</span>
+          </p>
+        </div>
+      </div>
     </main>
   );
 };
