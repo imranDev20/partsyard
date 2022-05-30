@@ -22,6 +22,8 @@ import AddReviewPage from "./Pages/Dashbaord/AddReviewPage";
 import ManageParts from "./Pages/Dashbaord/ManageParts";
 import ScrollToTop from "./hooks/scrollToTop";
 import MyPortfolio from "./Pages/MyPortfolio/MyPortfolio";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
@@ -107,6 +109,19 @@ function App() {
         <Route path="*" element={<NotFound />} />
       </Routes>
       <ScrollToTop />
+      <ToastContainer
+        position="top-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
+
+      <ToastContainer />
       <Footer />
     </div>
   );

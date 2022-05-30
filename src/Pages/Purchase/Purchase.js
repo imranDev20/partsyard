@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
 import auth from "../../firebase";
 
 const Purchase = () => {
@@ -16,6 +17,7 @@ const Purchase = () => {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm({
     defaultValues: preloadedUser,
@@ -60,10 +62,22 @@ const Purchase = () => {
       .post(`${process.env.REACT_APP_SERVER_URL}/orders`, order)
       .then(function (response) {
         console.log(response, "post request successfull");
+
+        toast.success("Successfully placed order.", {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
       })
       .catch(function (error) {
         console.log(error);
       });
+
+    reset();
   };
 
   return (
