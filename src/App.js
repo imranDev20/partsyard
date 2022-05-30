@@ -11,14 +11,14 @@ import SignUp from "./Pages/SignUp/SignUp";
 import NotFound from "./Pages/NotFound.js/404";
 import Dashboard from "./Pages/Dashbaord/Dashboard";
 import MyOrders from "./Pages/Dashbaord/MyOrders";
-import AddReview from "./Pages/Dashbaord/AddReview";
+import AddReviews from "./Pages/Dashbaord/AddReviews";
 import MyProfile from "./Pages/Dashbaord/MyProfile";
 import Users from "./Pages/Dashbaord/Users";
 import RequireAdmin from "./Pages/Shared/RequireAdmin";
 import AllOrders from "./Pages/Dashbaord/AllOrders";
 import Payment from "./Pages/Payment/Payment";
-import DeleteOrderModal from "./Pages/Shared/DeleteOrderModal";
 import AddParts from "./Pages/Dashbaord/AddParts";
+import AddReviewPage from "./Pages/Dashbaord/AddReviewPage";
 
 function App() {
   return (
@@ -31,6 +31,15 @@ function App() {
           element={
             <RequireAuth>
               <Payment />
+            </RequireAuth>
+          }
+        />
+
+        <Route
+          path="reviews/:partId"
+          element={
+            <RequireAuth>
+              <AddReviewPage />
             </RequireAuth>
           }
         />
@@ -51,10 +60,10 @@ function App() {
             </RequireAuth>
           }
         >
-          <Route index element={<MyOrders />} />
+          <Route index element={<MyProfile />} />
+          <Route path="my-orders" element={<MyOrders />} />
+          <Route path="add-review" element={<AddReviews />} />
 
-          <Route path="add-review" element={<AddReview />} />
-          <Route path="my-profile" element={<MyProfile />} />
           <Route
             path="users"
             element={

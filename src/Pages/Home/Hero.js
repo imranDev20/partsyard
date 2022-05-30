@@ -16,7 +16,9 @@ const Hero = () => {
         effect="fade"
         spaceBetween={50}
         slidesPerView={1}
-        autoplay
+        autoplay={{
+          delay: 5000,
+        }}
         navigation
         pagination
         // onSlideChange={() => console.log("slide change")}

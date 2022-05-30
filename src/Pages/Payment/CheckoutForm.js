@@ -12,7 +12,7 @@ const CheckoutForm = ({ order }) => {
   const [clientSecret, setClientSecret] = useState("");
 
   console.log(order);
-  const { _id, price, name, email, partName } = order;
+  const { _id, price, name, email, partName, partImage, partId } = order;
 
   useEffect(() => {
     fetch(`${process.env.REACT_APP_SERVER_URL}/create-payment-intent`, {
@@ -76,8 +76,10 @@ const CheckoutForm = ({ order }) => {
 
       // updaing db information
       const payment = {
-        userName: name,
-        userEmail: email,
+        username: name,
+        image: partImage,
+        partId: partId,
+        email: email,
         partName: partName,
         amount: price,
         transactionId: paymentIntent.id,

@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
-import axios from "axios";
-import { useAuthState } from "react-firebase-hooks/auth";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
+import axios from "axios";
+import { useParams } from "react-router-dom";
+import { useAuthState } from "react-firebase-hooks/auth";
 import auth from "../../firebase";
 
-const Purchase = () => {
+const AddReviewPage = () => {
+  const { partId } = useParams();
+  const [part, setPart] = useState({});
   const [user, loading, error] = useAuthState(auth);
 
   const preloadedUser = {
@@ -16,12 +18,11 @@ const Purchase = () => {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm({
     defaultValues: preloadedUser,
   });
-  const { partId } = useParams();
-  const [part, setPart] = useState({});
 
   useEffect(() => {
     const getPart = async () => {
@@ -34,37 +35,36 @@ const Purchase = () => {
     getPart();
   }, [partId]);
 
-  const handlePlaceOrder = async (data) => {
+  const handleAddReview = async (data) => {
     const name = data?.name;
     const email = data?.email;
-    const phone = data?.phone;
+    const avatar = user?.photoURL;
+    const text = data?.review;
     const partId = part?._id;
-    const orderAmount = data?.orderAmount;
-    const address = data?.address;
     const partName = part?.name;
-    const price = part?.price;
     const partImage = part?.image;
+    console.log(data);
 
-    const order = {
+    const reivew = {
       name,
       email,
-      phone,
-      price,
-      orderAmount,
-      address,
+      avatar,
+      text,
       partName,
       partImage,
       partId,
     };
 
     await axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/orders`, order)
+      .post(`${process.env.REACT_APP_SERVER_URL}/reviews`, reivew)
       .then(function (response) {
         console.log(response, "post request successfull");
       })
       .catch(function (error) {
         console.log(error);
       });
+
+    reset();
   };
 
   return (
@@ -92,7 +92,7 @@ const Purchase = () => {
 
       {user && (
         <div className="max-w-lg mx-auto">
-          <form onSubmit={handleSubmit(handlePlaceOrder)} noValidate>
+          <form onSubmit={handleSubmit(handleAddReview)} noValidate>
             <div className="flex">
               {/* Name field */}
               <div className="form-control w-1/2 px-2">
@@ -159,126 +159,35 @@ const Purchase = () => {
               </div>
             </div>
 
-            <div className="flex">
-              {/* Phone */}
-              <div className="form-control w-1/2 px-2">
-                <label className="label">
-                  <span className="label-text">Phone</span>
-                </label>
-                <input
-                  type="tel"
-                  placeholder="Phone number..."
-                  className="input input-bordered"
-                  {...register("phone", {
-                    required: {
-                      value: true,
-                      message: "Phone is required",
-                    },
-                    minLength: {
-                      value: 11,
-                      message: "Must be 11 characters",
-                    },
-                    pattern: {
-                      value: /(^(\+88|0088)?(01){1}[3456789]{1}(\d){8})$/,
-                      message: "Provide a Bangladeshi number",
-                    },
-                  })}
-                />
-                <label className="label">
-                  {errors.phone?.type === "required" && (
-                    <span className="label-text-alt text-red-500">
-                      {errors.phone.message}
-                    </span>
-                  )}
-                  {errors.phone?.type === "minLength" && (
-                    <span className="label-text-alt text-red-500">
-                      {errors.phone.message}
-                    </span>
-                  )}
-                  {errors.phone?.type === "pattern" && (
-                    <span className="label-text-alt text-red-500">
-                      {errors.phone.message}
-                    </span>
-                  )}
-                </label>
-              </div>
-
-              {/* Order Count */}
-              <div className="form-control w-1/2 px-2">
-                <label className="label">
-                  <span className="label-text">Order amount</span>
-                </label>
-                <input
-                  type="number"
-                  min={part.minOrder}
-                  name="orderAmount"
-                  placeholder={`Minimum order: ${part?.minOrder}`}
-                  className="input input-bordered"
-                  {...register("orderAmount", {
-                    required: {
-                      value: true,
-                      message: "Order can't be empty",
-                    },
-                    min: {
-                      value: part?.minOrder,
-                      message: `Must order more than ${part?.minOrder} items`,
-                    },
-                    max: {
-                      value: part?.available,
-                      message: `Only ${part?.available} items available`,
-                    },
-                  })}
-                />
-                <label className="label">
-                  {errors.orderAmount?.type === "required" && (
-                    <span className="label-text-alt text-red-500">
-                      {errors.orderAmount.message}
-                    </span>
-                  )}
-                  {errors.orderAmount?.type === "min" && (
-                    <span className="label-text-alt text-red-500">
-                      {errors.orderAmount.message}
-                    </span>
-                  )}
-                  {errors.orderAmount?.type === "max" && (
-                    <span className="label-text-alt text-red-500">
-                      {errors.orderAmount.message}
-                    </span>
-                  )}
-                </label>
-              </div>
-            </div>
-
-            <div className="form-control  px-2">
+            <div className="form-control px-2">
               <label className="label">
-                <span className="label-text">Address</span>
+                <span className="label-text">Review</span>
               </label>
-              <input
-                type="text"
-                name="address"
-                placeholder="Your address..."
-                className="input input-bordered"
-                {...register("address", {
+              <textarea
+                className="textarea textarea-bordered	"
+                name="review"
+                placeholder="Add your review here..."
+                rows={4}
+                {...register("review", {
                   required: {
-                    value: false,
-                    message: "Address is required",
+                    value: true,
+                    message: "Review can't be empty",
                   },
                 })}
-              />
+              ></textarea>
+
               <label className="label">
-                {errors.address?.type === "required" && (
+                {errors.review?.type === "required" && (
                   <span className="label-text-alt text-red-500">
-                    {errors.address.message}
+                    {errors.review.message}
                   </span>
                 )}
               </label>
             </div>
 
-            <span className="label-text-alt text-red-500"></span>
-
             <div className="form-control mt-6 uppercase px-2">
               <button type="submit" className={`btn  ${loading && "loading"}`}>
-                Place Order
+                Add Review
               </button>
             </div>
           </form>
@@ -288,4 +197,4 @@ const Purchase = () => {
   );
 };
 
-export default Purchase;
+export default AddReviewPage;
