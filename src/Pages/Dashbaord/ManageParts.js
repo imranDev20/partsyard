@@ -28,7 +28,6 @@ const ManageParts = () => {
               <th>Parts</th>
               <th>Price</th>
               <th>Available</th>
-              <th>Minimum Order</th>
               <th></th>
             </tr>
           </thead>

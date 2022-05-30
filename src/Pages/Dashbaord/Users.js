@@ -25,15 +25,10 @@ const Users = () => {
         <table className="table w-full">
           <thead>
             <tr>
-              <th>
-                {/* <label>
-                  <input type="checkbox" className="checkbox" />
-                </label> */}
-              </th>
+              <th></th>
               <th>Name</th>
               <th>Make Admin</th>
               <th>Delete</th>
-              {/* <th></th> */}
             </tr>
           </thead>
           <tbody>

@@ -24,7 +24,11 @@ const Header = () => {
               <label tabIndex="0" className="btn btn-ghost btn-circle avatar">
                 <div className="w-10 rounded-full">
                   <img
-                    src={user && user?.photoURL}
+                    src={
+                      user && user?.photoURL
+                        ? user?.photoURL
+                        : "https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg"
+                    }
                     referrerPolicy="no-referrer"
                   />
                 </div>
@@ -37,7 +41,11 @@ const Header = () => {
                   <div className="w-16 h-16  overflow-hidden mb-2">
                     <img
                       className="rounded-full"
-                      src={user?.photoURL}
+                      src={
+                        user && user?.photoURL
+                          ? user?.photoURL
+                          : "https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg"
+                      }
                       referrerPolicy="no-referrer"
                     />
                   </div>
@@ -47,7 +55,6 @@ const Header = () => {
                 <li>
                   <Link to="/dashboard" className="justify-between">
                     <AiOutlineDashboard className="text-xl" /> Dashboard
-                    {/* <span className="badge">New</span> */}
                   </Link>
                 </li>
                 <li>

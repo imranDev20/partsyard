@@ -53,6 +53,11 @@ const Dashboard = () => {
                 <Link to="add-parts">Add A Part</Link>
               </li>
             )}
+            {admin && (
+              <li>
+                <Link to="manage-parts">Manage Parts</Link>
+              </li>
+            )}
           </ul>
         </div>
       </div>

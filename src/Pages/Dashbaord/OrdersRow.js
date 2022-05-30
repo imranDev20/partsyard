@@ -1,45 +1,34 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const OrdersRow = ({
   email,
   index,
   partName,
-  refetch,
-  id,
-  transactionId,
+
   paid,
 }) => {
+  const [shipped, setShipped] = useState(false);
   return (
     <tr>
       <th>{index + 1}</th>
       <td>
-        <div>{partName}</div>
+        <div>
+          {partName.length > 30 ? partName.substring(0, 30) + "..." : partName}
+        </div>
       </td>
       <td>
         <div className="">{email}</div>
       </td>
       <td>
-        {/* Zemlak, Daniel and Leannon
-        <br />
-        <span className="badge badge-ghost badge-sm">
-          Desktop Support Technician
-        </span> */}
-
-        <p className="badge badge-ghost">{!paid ? "Pending" : "Paid"}</p>
-      </td>
-      <td>
-        {!paid && (
-          <button className="btn btn-xs">
-            <Link to={`/payment/${id}`}>Pay</Link>
+        {paid ? (
+          <button onClick={() => setShipped(true)} className="btn btn-xs">
+            {shipped ? "Shipped" : "Pending"}
           </button>
+        ) : (
+          <button className="btn btn-ghost btn-xs">Unpaid</button>
         )}
-        {paid && <p className="badge badge-ghost badge-sm">{transactionId}</p>}
       </td>
-
-      {/* <th>
-        <button className="btn btn-ghost btn-xs">details</button>
-      </th> */}
     </tr>
   );
 };

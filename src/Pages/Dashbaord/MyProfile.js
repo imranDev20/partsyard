@@ -91,7 +91,11 @@ const MyProfile = () => {
           <div className="w-28 h-28 rounded-full overflow-hidden ">
             <img
               className="w-full h-full object-cover"
-              src={currentUser.avatar}
+              src={
+                currentUser.avatar
+                  ? user?.photoURL
+                  : "https://thumbs.dreamstime.com/b/default-avatar-profile-vector-user-profile-default-avatar-profile-vector-user-profile-profile-179376714.jpg"
+              }
               alt=""
               referrerPolicy="no-referrer"
             />

@@ -33,7 +33,7 @@ const AllOrders = () => {
               <th>Part Name</th>
               <th>Email</th>
               <th>Payment Status</th>
-              <th>Transaction ID</th>
+              <th></th>
               {/* <th></th> */}
             </tr>
           </thead>

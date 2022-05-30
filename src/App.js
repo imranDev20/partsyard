@@ -20,6 +20,8 @@ import Payment from "./Pages/Payment/Payment";
 import AddParts from "./Pages/Dashbaord/AddParts";
 import AddReviewPage from "./Pages/Dashbaord/AddReviewPage";
 import ManageParts from "./Pages/Dashbaord/ManageParts";
+import ScrollToTop from "./hooks/scrollToTop";
+import MyPortfolio from "./Pages/MyPortfolio/MyPortfolio";
 
 function App() {
   return (
@@ -27,6 +29,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/portfolio" element={<MyPortfolio />} />
         <Route
           path="payment/:orderId"
           element={
@@ -103,6 +106,7 @@ function App() {
         <Route path="signup" element={<SignUp />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
+      <ScrollToTop />
       <Footer />
     </div>
   );

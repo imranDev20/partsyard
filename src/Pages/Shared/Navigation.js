@@ -4,7 +4,8 @@ import CustomLink from "./CustomLink";
 const Navigation = () => {
   const routes = [
     { id: 1, label: "Home", link: "/" },
-    { id: 3, label: "Blog", link: "/blog" },
+    { id: 3, label: "Portfolio", link: "/portfolio" },
+    { id: 2, label: "Blog", link: "/blog" },
   ];
   return (
     <nav className="lg:flex mr-5 hidden">

@@ -22,12 +22,7 @@ const UsersRow = ({ email, index, role, refetch }) => {
   };
   return (
     <tr>
-      <th>
-        {/* <label>
-          <input type="checkbox" className="checkbox" />
-        </label> */}
-        {index + 1}
-      </th>
+      <th>{index + 1}</th>
       <td>
         <div className="flex items-center space-x-3">
           {/* <div className="avatar">
@@ -40,16 +35,10 @@ const UsersRow = ({ email, index, role, refetch }) => {
           </div> */}
           <div>
             <div className="">{email}</div>
-            {/* <div className="text-sm opacity-50">United States</div> */}
           </div>
         </div>
       </td>
       <td>
-        {/* Zemlak, Daniel and Leannon
-        <br />
-        <span className="badge badge-ghost badge-sm">
-          Desktop Support Technician
-        </span> */}
         {role !== "admin" && (
           <button onClick={makeAdmin} className="btn btn-xs">
             Make Admin
@@ -59,9 +48,6 @@ const UsersRow = ({ email, index, role, refetch }) => {
       <td>
         <button className="btn btn-xs">Delete</button>
       </td>
-      {/* <th>
-        <button className="btn btn-ghost btn-xs">details</button>
-      </th> */}
     </tr>
   );
 };
